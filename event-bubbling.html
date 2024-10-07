@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Bubbling Example</title>
+    <style>
+        #outer {
+            padding: 20px;
+            background-color: lightblue;
+        }
+        #middle {
+            padding: 20px;
+            background-color: lightgreen;
+        }
+        #inner {
+            padding: 20px;
+            background-color: lightcoral;
+        }
+    </style>
+</head>
+<body>
+
+<div id="outer">
+    Outer Div
+    <div id="middle">
+        Middle Div
+        <div id="inner">
+            Inner Div
+        </div>
+    </div>
+</div>
+
+<script>
+    // Select the elements
+    const outerDiv = document.getElementById('outer');
+    const middleDiv = document.getElementById('middle');
+    const innerDiv = document.getElementById('inner');
+
+    // Event listener for the inner div
+    innerDiv.addEventListener('click', function(event) {
+        alert('Inner Div Clicked!');
+        console.log('Event Target:', event.target.id);
+    });
+
+    // Event listener for the middle div
+    middleDiv.addEventListener('click', function(event) {
+        alert('Middle Div Clicked!');
+        console.log('Event Target:', event.target.id);
+    });
+
+    // Event listener for the outer div
+    outerDiv.addEventListener('click', function(event) {
+        alert('Outer Div Clicked!');
+        console.log('Event Target:', event.target.id);
+    });
+</script>
+
+</body>
+</html>

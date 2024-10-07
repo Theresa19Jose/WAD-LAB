@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Grades</title>
+</head>
+<body>
+    <script>
+        var n = parseInt(window.prompt("Enter the number of students"));
+        var grades = new Array(n);
+        var sum = 0;
+
+        // Collect grades for each student
+        for (let i = 0; i < n; i++) {
+            grades[i] = parseFloat(window.prompt("Enter grade for student " + (i + 1)));
+            sum += grades[i]; // Accumulate the sum of grades
+        }
+
+        // Calculate average grade
+        var average = sum / n;
+
+        // Display grades and average
+        document.writeln("Grades of students are:<br>");
+        for (let i = 0; i < grades.length; i++) {
+            document.writeln("Student " + (i + 1) + ": " + grades[i] + "<br>");
+        }
+
+        document.writeln("<br>Average grade of the class: " + average.toFixed(2));
+    </script>
+</body>
+</html>

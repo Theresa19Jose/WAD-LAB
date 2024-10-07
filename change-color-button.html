@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Color Button</title>
+    <style>
+        #colorButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: color 0.3s, background-color 0.3s; /* Smooth transition */
+        }
+    </style>
+</head>
+<body>
+
+<button id="colorButton">Change Color</button>
+
+<script>
+    // Select the button element
+    const colorButton = document.getElementById('colorButton');
+
+    // Add mouseover event listener
+    colorButton.addEventListener('mouseover', function() {
+        colorButton.style.color = 'red'; // Change foreground color to red
+        colorButton.style.backgroundColor = ''; // Reset background color
+    });
+
+    // Add mouseout event listener
+    colorButton.addEventListener('mouseout', function() {
+        colorButton.style.backgroundColor = 'green'; // Change background color to green
+    });
+
+    // Add mouseleave event listener to reset foreground color
+    colorButton.addEventListener('mouseleave', function() {
+        colorButton.style.color = ''; // Reset foreground color when mouse leaves
+    });
+</script>
+
+</body>
+</html>
+
+

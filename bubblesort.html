@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Sort</title>
+</head>
+<body>
+    <script>
+        function bubbleSort(arr) {
+            const n = arr.length;
+            let swapped;
+
+            for (let i = 0; i < n - 1; i++) {
+                swapped = false;
+
+                for (let j = 0; j < n - i - 1; j++) {
+                    if (arr[j] > arr[j + 1]) {
+                        // Swap elements
+                        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+                        swapped = true;
+                    }
+                }
+
+                if (!swapped) {
+                    break;
+                }
+            }
+
+            return arr;
+        }
+
+        var n = parseInt(window.prompt("Enter size of the array"));
+        var arr = new Array(n);
+
+        for (let i = 0; i < n; i++) {
+            arr[i] = parseInt(window.prompt("Enter element " + (i + 1)));
+        }
+
+        // Sort the array using Bubble Sort
+        var sortedArray = bubbleSort(arr);
+
+        // Display the sorted array
+        document.writeln("Sorted Array elements are:<br>");
+        for (let i = 0; i < sortedArray.length; i++) {
+            document.writeln(sortedArray[i] + "<br>");
+        }
+    </script>
+</body>
+</html>
+

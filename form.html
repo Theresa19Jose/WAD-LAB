@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<style>
+    body{
+    font-family:Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    }
+    
+    .regf{
+    border:solid 1px;
+    border-radius:10px;
+    padding:50px 50px
+    }
+    
+</style>
+
+</head>
+<body>
+<div class="regf">
+    <h3>Registration Form</h3>
+    <form name="myform" action="/action_page.php" onsubmit="return validateForm()" method="post">
+        <label for="userid">User ID:</label>
+	<input type="text" id="userid" placeholder="Required and must be of length 5 to 12" required>
+	<br>
+	<br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" placeholder="Required and must be of length 7 to 12" required>
+	<br>
+	<br>
+
+        <label for="fname">Name:</label>
+        <input type="text" id="fname" placeholder="Required and alphabets only" required>
+	<br>
+	<br>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" placeholder="Optional" >
+	<br>
+	<br>
+
+        <label for="country">Country:</label>
+        <select id="country" required>
+            <option value="">(please choose a country)</option>            
+            <option value="USA">United States</option>
+            <option value="CAN">Canada</option>
+            <option value="GBR">United Kingdom</option>
+            <option value="AUS">Australia</option>
+            <option value="IND">India</option>
+            <option value="FRA">France</option>
+            <option value="GER">Germany</option>
+            <option value="JP">Japan</option>
+            <option value="BRA">Brazil</option>
+        </select>
+	 <span>Please select your country from the list.</span><br><br>
+	<br>
+	<br>
+
+        <label for="zip">Zip Code:</label>
+        <input type="number" id="zip" placeholder="Required. Must be numerical only" required>
+	<br>
+	<br>
+
+        <label for="email">Email ID:</label>
+        <input type="email" id="email" placeholder="Required.Must be valid Email ID" required>
+	<br>
+	<br>
+
+	<label>Sex:</label>
+	<input type="radio" name="sex" value="male" id="male"> 
+	<label for="male" style="display: inline;">Male</label>
+	<input type="radio" name="sex" value="female" id="female"> 
+	<label for="female" style="display: inline;">Female</label>
+	<br>
+	<br>
+
+        <label>Language:</label>
+        <input type="checkbox" id="lang1" value="English"> English
+        <input type="checkbox" id="lang2" value="Non-English"> Non-English
+	<br>
+	<br>
+
+        <label for="about">About:</label>
+        <textarea id="about" placeholder="Optional" rows="4" style="resize: none;"></textarea>
+	<br>
+	<br>
+        
+        <input type="submit" value="Submit">
+	<br>
+	<br>
+    </form>
+    <div id="errorMessage"></div>
+</div>
+
+</body>
+
+<script>
+    function validateForm() {
+        const errorMessage = document.getElementById('errorMessage');
+        errorMessage.innerHTML = '';
+
+        let valid = true;
+
+        const userid = document.getElementById('userid').value.trim();
+        if (userid.length < 5 || userid.length > 12) {
+            errorMessage.innerHTML += '<p>User ID must be between 5 and 12 characters.</p>';
+            valid = false;
+        }
+
+        const password = document.getElementById('password').value;
+        if (password.length < 7) {
+            errorMessage.innerHTML += '<p>Password must be at least 7 characters long.</p>';
+            valid = false;
+        }
+
+        const name = document.getElementById('fname').value.trim();
+        const namePattern = /^[A-Za-z\s]+$/;
+        if (!namePattern.test(name)) {
+            errorMessage.innerHTML += '<p>Name must contain only alphabets.</p>';
+            valid = false;
+        }
+
+        const email = document.getElementById('email').value.trim();
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            errorMessage.innerHTML += '<p>Please enter a valid email address.</p>';
+            valid = false;
+        }
+
+        return valid; // Prevent form submission if validation fails
+    }
+</script>
+
+</html>
